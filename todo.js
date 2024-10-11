@@ -1,36 +1,21 @@
 "use strict";
 
-// function to add a new todo
-function addTodo() {
-    // get the input value
-    const todoInput = document.getElementById("todoInput").value;
-
-    // check if the input value is empty
-    if (todoInput === "") {
-        alert("Please enter a todo");
-        return;
-    }
-
-    // create a new li element
+// function to add a task
+function addTask(task, taskList) {
     const li = document.createElement("li");
-
-    // create a text node with the input value
-    const textNode = document.createTextNode(todoInput);
-
-    // append the text node to the li element
-    li.appendChild(textNode);
-
-    // append the li element to the ul element
-    document.getElementById("todoList").appendChild(li);
-
-    // clear the input field
-    clearInput();
+    li.textContent = task;
+    taskList.appendChild(li);
 }
 
-// function to clear input field
-function clearInput() {
-    document.getElementById("todoInput").value = "";
+//function to clear the input field
+function clearInput(inputField) {
+    inputField.value = "";
 }
 
-// export functions
-export { addTodo, clearInput };
+//alternate method to export
+export function sayHello() {
+    alert("Hello, World!");
+}
+
+//exporting functions
+export { addTask, clearInput };

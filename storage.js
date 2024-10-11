@@ -1,14 +1,15 @@
 "use strict";
 
-// save todo to local storage
-function saveTodo(tasks) {
-    localStorage.setItem("tasks", JSON.stringify(tasks));
+//function to save task to local storage
+function saveTasks(tasks) {
+    localStorage.set("tasks", JSON.stringify(tasks));
 }
 
-// load todo from local storage
-function loadTodo() {
-    return JSON.parse(localStorage.getItem("tasks")) || [];
+//function to load tasks from local storage
+function loadTasks() {
+    const tasks = localStorage.getItem("tasks");
+    return tasks ? JSON.parse(tasks) : [];
 }
 
-// export functions
-export { saveTodo, loadTodo };
+//exports
+export { saveTasks, loadTasks };

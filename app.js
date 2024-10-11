@@ -1,21 +1,23 @@
 "use strict";
 
-// import functions
-import { addTodo, clearInput } from "./todo.js";
-import { saveTodo, loadTodo } from "./storage.js";
+//import modules
+import { addTask, clearInput } from "./todo.js";
+import { saveTasks, loadTasks } from "./storage.js";
 
-// set up DOM elements
-const todoInput = document.getElementById("todoInput");
-const todoList = document.getElementById("todoList");
-const saveButton = document.getElementById("saveButton");
-const loadButton = document.getElementById("loadButton");
+//import * as storage from "./storage.js";
 
-// load todos from local storage
-let tasks = loadTodo();
+//set up DOM references
+const taskList = document.getElementById("task-list");
+const newTaskInput = document.getElementById("new-task");
+const addTaskButton = document.getElementById("add-task");
 
-// add event listener to the input field
-todoInput.addEventListener("click", ()=> {
-    const todoInput = document.getElementById("todoInput");
-    tasks.push(todoInput.value);
-    saveTodo(tasks);
+//load tasks from local storage
+const tasks = loadTasks();
+
+//add event listenr for new task
+addTaskButton.addEventListener("click", () => {
+    const task = newTaskInput.value.trim();
+    tasks.push(task);
+    saveTasks(tasks);
+    clearInput(newTaskInput);
 });
